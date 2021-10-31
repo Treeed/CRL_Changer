@@ -19,6 +19,7 @@ class MotorController(QObject):
 
         self.motor = tango.DeviceProxy(config.Changer.tango_server + motor_address)
 
+    def start_poll(self):
         self._timer = QTimer()
         self._timer.timeout.connect(self.update)
         self._timer.start(1000 / self.config.Changer.polling_rate_hz)
