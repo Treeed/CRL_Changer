@@ -1,14 +1,20 @@
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtCore
 import math
+
+import config
+from src import motorControl
 
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
 
-        import config as config
+        self.motors = [motorControl.MotorController(*motor) for motor in config.Changer.motors]
 
-        self.motor_bar = MotorBar(config.Changer.motors)
+        self.motor_bar = MotorBar(self.motors)
+
+        for motor in self.motors:
+            motor.start_poll()
 
         self.setCentralWidget(self.motor_bar)
         self.show()
