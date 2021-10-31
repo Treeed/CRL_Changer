@@ -58,7 +58,7 @@ class MotorController(QObject):
             self.pos_changed.emit(new_pos)
             self.last_pos = new_pos
 
-        new_speed = self.motor.speed
+        new_speed = self.motor.slewrate
         if new_speed != self.last_speed:
             self.speed_changed.emit(new_speed)
             self.last_speed = new_speed
