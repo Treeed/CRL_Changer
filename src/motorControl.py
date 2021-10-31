@@ -30,7 +30,10 @@ class MotorController(QObject):
         self.wait(config.Changer.timeout_ms, self.moveFinished)
 
     def move_steps(self, steps):
-        pass
+        self.motor.setupstepmove(self.motor.StepPositionInternal+steps)
+        self.motor.startmove()
+        self.motor_move_started = True
+        self.wait(config.Changer.timeout_ms, self.moveFinished)
 
     def go_to_cw(self):
         self._motor_y.moveToCwLimit()
