@@ -62,6 +62,9 @@ class PositionView(QtWidgets.QGroupBox):
         self.setTitle("Position:")
 
         self.viewer = QtWidgets.QDoubleSpinBox()
+        self.viewer.setRange(-99999999, 99999999)
+        self.viewer.setDecimals(4)
+        self.viewer.setSuffix("mm")
         self.go_button = QtWidgets.QPushButton("Go!")
 
         self._layout = QtWidgets.QHBoxLayout()
