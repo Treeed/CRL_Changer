@@ -53,7 +53,11 @@ class MotorController(QObject):
         QTimer.singleShot(timeout, loop.quit)
         if signal is not None:
             signal.connect(loop.quit)
+
         loop.exec()
+
+    def stop(self):
+        self.motor.StopMove()
 
     def update(self):
         new_pos = self.motor.position

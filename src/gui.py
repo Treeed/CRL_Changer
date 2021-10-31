@@ -45,6 +45,7 @@ class MotorView(QtWidgets.QGroupBox):
         self.go_limit_view = GoLimitView(self.motor_controller.go_to_cw, self.motor_controller.go_to_ccw, self.hardware_buttons)
         self.speed_view = SpeedView(self.motor_controller.speed_changed, self.motor_controller.set_speed, self.hardware_buttons)
         self.recall_position_view = RecallPositionView(self.pos_view.viewer)
+        self.stop_button = StopView(self.motor_controller.stop)
 
         self._layout = QtWidgets.QVBoxLayout()
         self._layout.addWidget(self.pos_view, 0)
@@ -52,6 +53,9 @@ class MotorView(QtWidgets.QGroupBox):
         self._layout.addWidget(self.go_limit_view, 0)
         self._layout.addWidget(self.speed_view, 0)
         self._layout.addWidget(self.recall_position_view, 0)
+        self._layout.addSpacing(20)
+        self._layout.addWidget(self.stop_button, 0)
+        self._layout.setAlignment(self.stop_button, QtCore.Qt.AlignHCenter)
 
         self.setLayout(self._layout)
 
@@ -199,6 +203,15 @@ class RecallPositionView(QtWidgets.QGroupBox):
 
     def recall_position(self):
         self._reference_pos_view.setValue(self.saved_pos)
+
+
+class StopView(QtWidgets.QPushButton):
+    def __init__(self, stop_method):
+        super(StopView, self).__init__("STOP")
+
+        self.setMinimumSize(60, 20)
+
+        self.clicked.connect(stop_method)
 
 
 class LogSpinBox(QtWidgets.QDoubleSpinBox):
