@@ -144,8 +144,8 @@ class SpeedView(QtWidgets.QGroupBox):
         self.setTitle("Speed:")
 
         self.speed_viewer = LogSpinBox()
-        self.speed_viewer.setRange(0, 1000)
-        self.speed_viewer.setSuffix("mm/s")
+        self.speed_viewer.setRange(0, 99999999)
+        self.speed_viewer.setSuffix(" steps/s")
         self.set_speed_button = QtWidgets.QPushButton("Set speed")
 
         self._layout = QtWidgets.QHBoxLayout()
