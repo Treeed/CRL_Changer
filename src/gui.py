@@ -76,11 +76,15 @@ class PositionView(QtWidgets.QGroupBox):
         self.hardware_buttons = hardware_buttons
         self.hardware_buttons.append(self.go_button)
 
+        self.go_to_method = go_to_method
         pos_changed_signal.connect(self.pos_changed)
-        self.go_button.clicked.connect(lambda: disable_buttons(self.hardware_buttons, go_to_method))
+        self.go_button.clicked.connect(lambda: disable_buttons(self.hardware_buttons, self.change_pos))
 
     def pos_changed(self, pos):
         self.viewer.setValue(pos)
+
+    def change_pos(self):
+        self.go_to_method(self.viewer.value())
 
 
 class StepView(QtWidgets.QGroupBox):
