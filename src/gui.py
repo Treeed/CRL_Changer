@@ -161,14 +161,14 @@ class SpeedView(QtWidgets.QGroupBox):
         self.hardware_buttons.append(self.set_speed_button)
 
         self.set_speed_method = set_speed_method
-        self.speed_changed_signal.connect(self.speed_changed)
+        speed_changed_signal.connect(self.speed_changed)
         self.set_speed_button.clicked.connect(lambda: disable_buttons(self.hardware_buttons, self.change_speed))
 
     def speed_changed(self, speed):
         self.speed_viewer.setValue(speed)
 
     def change_speed(self):
-        self.set_speed_method(self.speed_viewer.value)
+        self.set_speed_method(self.speed_viewer.value())
 
 
 class RecallPositionView(QtWidgets.QGroupBox):
