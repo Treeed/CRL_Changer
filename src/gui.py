@@ -195,7 +195,7 @@ class RecallPositionView(QtWidgets.QGroupBox):
 
     def save_position(self):
         self.saved_pos = self._reference_pos_view.value()
-        self.pos_viewer.setText("{:.2f}".format(self.saved_pos))
+        self.pos_viewer.setText("{:.4f}".format(self.saved_pos))
 
     def recall_position(self):
         self._reference_pos_view.setValue(self.saved_pos)
