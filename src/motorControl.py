@@ -22,12 +22,12 @@ class MotorController(QObject):
     def start_poll(self):
         self._timer = QTimer()
         self._timer.timeout.connect(self.update)
-        self._timer.start(1000 / self.config.Changer.polling_rate_hz)
+        self._timer.start(1000 / config.Changer.polling_rate_hz)
 
     def move_to(self, pos):
         self.motor.position = pos
         self.motor_move_started = True
-        self.wait(self.config.Changer.timeout_ms, self.moveFinished)
+        self.wait(config.Changer.timeout_ms, self.moveFinished)
 
     def move_steps(self, steps):
         pass
@@ -35,12 +35,12 @@ class MotorController(QObject):
     def go_to_cw(self):
         self._motor_y.moveToCwLimit()
         self.motor_move_started = True
-        self.wait(self.config.Changer.timeout_ms, self.moveFinished)
+        self.wait(config.Changer.timeout_ms, self.moveFinished)
 
     def go_to_ccw(self):
         self._motor_y.moveToCcwLimit()
         self.motor_move_started = True
-        self.wait(self.config.Changer.timeout_ms, self.moveFinished)
+        self.wait(config.Changer.timeout_ms, self.moveFinished)
 
     def set_speed(self, speed):
         self.motor.slewrate = speed
