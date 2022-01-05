@@ -1,7 +1,7 @@
 from PyQt5 import QtWidgets, QtCore
 import math
 
-import config
+from config import config
 from src import motorControl
 
 
@@ -9,7 +9,7 @@ class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.motors = [motorControl.MotorController(*motor) for motor in config.Changer.motors]
+        self.motors = [motorControl.MotorController(*motor) for motor in config["motors"]]
 
         self.motor_bar = MotorBar(self.motors)
 
