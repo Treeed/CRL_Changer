@@ -1,0 +1,23 @@
+{
+    "tango_server": "haspp02oh1:10000/",
+    "motors": [
+        [
+            "1",
+            "p02/motor/elab.01"
+        ],
+        [
+            "2",
+            "p02/motor/elab.02"
+        ],
+        [
+            "3",
+            "p02/motor/elab.03"
+        ],
+        [
+            "4",
+            "p02/motor/elab.04"
+        ]
+    ],
+    "timeout_ms": 120000,
+    "polling_rate_hz": 5
+}
