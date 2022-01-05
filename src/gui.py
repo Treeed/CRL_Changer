@@ -143,7 +143,7 @@ class GoLimitView(QtWidgets.QGroupBox):
         self.hardware_buttons.append(self.CCW_button)
 
         self.CW_button.clicked.connect(lambda: disable_buttons(self.hardware_buttons, go_to_cw_method))
-        self.CCW_button.clicked.connect(lambda: disable_buttons(self.hardware_buttons, go_to_cw_method))
+        self.CCW_button.clicked.connect(lambda: disable_buttons(self.hardware_buttons, go_to_ccw_method))
 
 
 class SpeedView(QtWidgets.QGroupBox):

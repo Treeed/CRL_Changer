@@ -36,12 +36,12 @@ class MotorController(QObject):
         self.wait(config.Changer.timeout_ms, self.moveFinished)
 
     def go_to_cw(self):
-        self._motor_y.moveToCwLimit()
+        self.motor.moveToCwLimit()
         self.motor_move_started = True
         self.wait(config.Changer.timeout_ms, self.moveFinished)
 
     def go_to_ccw(self):
-        self._motor_y.moveToCcwLimit()
+        self.motor.moveToCcwLimit()
         self.motor_move_started = True
         self.wait(config.Changer.timeout_ms, self.moveFinished)
 
